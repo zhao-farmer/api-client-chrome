@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>WebSocket Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .connection-status {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .connected {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .disconnected {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .messages {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        .sent {
+            background-color: #d1ecf1;
+            text-align: right;
+        }
+
+        .received {
+            background-color: #e2e3e5;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>WebSocket Client</h1>
+
+    <div class="form-group">
+        <label for="ws-url">WebSocket URL:</label>
+        <input type="text" id="ws-url" placeholder="ws://localhost:8080/websocket" value="wss://echo.websocket.org" />
+    </div>
+
+    <button id="connect-btn">连接</button>
+    <button id="disconnect-btn" disabled>断开连接</button>
+
+    <div class="connection-status disconnected" id="connection-status">未连接</div>
+
+    <div class="messages" id="messages"></div>
+
+    <div class="form-group">
+        <label for="message">消息:</label>
+        <textarea id="message" rows="3" placeholder="输入要发送的消息"></textarea>
+    </div>
+
+    <button id="send-btn" disabled>发送</button>
+    <button id="clear-btn">清空消息</button>
+
+    <script src="websocket.js"></script>
+</body>
+</html>
